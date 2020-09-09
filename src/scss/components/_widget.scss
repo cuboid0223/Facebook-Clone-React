@@ -1,0 +1,7 @@
+.widget{
+    flex: .34;
+    display: flex;
+    & > iframe{
+        margin-left: 60px;
+    }
+}
