@@ -1,3 +1,7 @@
 .sidebar{
     flex: 0.33;
+    position: sticky;
+    @include iphone{
+        display: none;
+    }
 }

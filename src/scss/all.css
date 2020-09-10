@@ -34,8 +34,11 @@ li {
   list-style: none;
 }
 
+body {
+  background-color: #eff2f5;
+}
+
 .app {
-  background-color: #f1f2f5;
   height: 100vh;
 }
 
@@ -43,9 +46,11 @@ li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin-top: 80px;
 }
 
 .header {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -56,8 +61,7 @@ li {
       -ms-flex-align: center;
           align-items: center;
   padding: 15px 20px;
-  position: -webkit-sticky;
-  position: sticky;
+  position: fixed;
   top: 0;
   background-color: #fff;
   z-index: 10;
@@ -105,6 +109,12 @@ li {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+@media (max-width: 568px) {
+  .header__middle {
+    display: none;
+  }
 }
 
 .header__right {
@@ -166,6 +176,14 @@ li {
   -webkit-box-flex: 0.33;
       -ms-flex: 0.33;
           flex: 0.33;
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+@media (max-width: 568px) {
+  .sidebar {
+    display: none;
+  }
 }
 
 .sidebarRow {
@@ -432,6 +450,12 @@ li {
 
 .widget > iframe {
   margin-left: 60px;
+}
+
+@media (max-width: 568px) {
+  .widget {
+    display: none;
+  }
 }
 
 .login {

@@ -1,23 +1,33 @@
-import React from 'react'
-import StoryReel from './StoryReel';
+import React, { useState, useEffect } from "react";
+import StoryReel from "./StoryReel";
 import MessageSender from "./MessageSender";
-import Post from './Post';
-
+import Post from "./Post";
+import db from "../firebase";
 
 const Feed = () => {
-    return (
-      <div className="feed">
-        <StoryReel />
-        <MessageSender />
-        <Post
-          profilePic="https://scontent.ftpe1-1.fna.fbcdn.net/v/t1.0-9/27750654_196100737654050_83083625155525200_n.jpg?_nc_cat=106&_nc_sid=09cbfe&_nc_ohc=poAjNp430jkAX_yBG3g&_nc_ht=scontent.ftpe1-1.fna&oh=fbcc0254c3c9da4e51aebc3a1015a1cf&oe=5F7B6505"
-          message="facebook clone!!!!"
-          timestamp="time"
-          username="陳泓棣"
-          image="https://reactjsexample.com/content/images/2017/08/20170826220634.jpg"
-        />
-      </div>
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    db.collection("posts").orderBy('timestamp', 'desc').onSnapshot((snapshot) =>
+      setPosts(snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() })))
     );
-}
+  }, []);
+  return (
+    <div className="feed">
+      <StoryReel />
+      <MessageSender />
+      {posts.map((post) => (
+        <Post
+          key={post.id}
+          profilePic={post.data.profilePic}
+          message={post.data.message}
+          timestamp={post.data.timestamp}
+          username={post.data.username}
+          image={post.data.image}
+        />
+      ))}
+      
+    </div>
+  );
+};
 
-export default Feed
+export default Feed;

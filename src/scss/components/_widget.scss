@@ -1,7 +1,12 @@
-.widget{
+.widget {
     flex: .34;
     display: flex;
-    & > iframe{
+
+    &>iframe {
         margin-left: 60px;
+    }
+
+    @include iphone {
+        display: none;
     }
 }

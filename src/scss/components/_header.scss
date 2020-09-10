@@ -1,9 +1,10 @@
 .header {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    position: sticky;
+    position: fixed;
     top: 0;
     background-color: #fff;
     z-index: 10;
@@ -37,6 +38,9 @@
         display: flex;
         justify-content: space-between;
 
+        @include iphone {
+            display: none;
+        }
     }
 
     &__right {
@@ -70,6 +74,7 @@
         .active>.MuiSvgIcon-root {
             color: #2e81f4;
         }
+
         .active {
             border-bottom: 4px solid #2e81f4;
         }
